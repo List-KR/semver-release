@@ -4,4 +4,5 @@ export type ProgramOptionsType = {
 	repo: string;
 	ciWorkspacePath: string;
 	ciActionPath: string;
+	debug: boolean;
 }

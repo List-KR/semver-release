@@ -1,8 +1,10 @@
 import * as Git from 'simple-git'
 import * as Semver from 'semver'
 import * as Os from 'node:os'
+import * as Actions from '@actions/core'
 import type * as Types from './types.js'
 import {UpdateDateVersion} from './semver.js'
+import {IsDebug} from './debug.js'
 
 function CreateGitInstance(ProgramOptions: Types.ProgramOptionsType): Git.SimpleGit {
 	const GitInstance = Git.simpleGit({
@@ -37,6 +39,11 @@ export async function CreateLatestTag(ProgramOptions: Types.ProgramOptionsType) 
 	if (Tags.all.length > 0 && Semver.valid(Tags.latest)) {
 		UpdateVersion = UpdateDateVersion(Tags.latest)
 		await CreateTag(ProgramOptions, UpdateVersion)
+	}
+
+	if (IsDebug(ProgramOptions)) {
+		Actions.debug(`Tags: ${JSON.stringify(Tags)}`)
+		Actions.debug(`UpdateVersion: ${UpdateVersion}`)
 	}
 
 	return UpdateVersion

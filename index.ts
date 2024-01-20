@@ -6,7 +6,8 @@ import type * as Types from './sources/types.js'
 const Program = new Commander.Command()
 
 // Set options.
-Program.option('--gh-token <TOKEN>', 'GitHub token', '')
+Program.option('--debug', 'output extra debugging', false)
+	.option('--gh-token <TOKEN>', 'GitHub token', '')
 	.option('--repo <REPO>', 'A GitHub repository. eg: owner/repo', '')
 	.option('--ci-workspace-path <PATH>', 'A path to the CI workspace.', '')
 	.option('--ci-action-path <PATH>', 'A path to the CI action.', '')
