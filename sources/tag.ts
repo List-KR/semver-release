@@ -32,7 +32,7 @@ export async function CreateLatestTag(ProgramOptions: Types.ProgramOptionsType) 
 	var UpdateVersion = ''
 
 	if (Tags.all.length === 0 || (Tags.all.length > 0 && !Semver.valid(Tags.latest))) {
-		UpdateVersion = '0.0.1'
+		UpdateVersion = UpdateDateVersion('0.0.1')
 		await CreateTag(ProgramOptions, UpdateVersion)
 	}
 
