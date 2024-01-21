@@ -103,6 +103,7 @@ export async function DeleteTagsWithCommits(ProgramOptions: Types.ProgramOptions
 	const FilteredCommits = await FilterCommitsWithTagsExceptRecentTwo(CommitsResults as unknown as ReturnType<typeof ListCommitsContainingTag>)
 	const GitInstance = CreateGitInstance(ProgramOptions)
 	for (const FilteredCommit of FilteredCommits) {
-		void GitInstance.tag(['--delete', `${/(?!tag: )[0-9]+.[0-9]+.[0-9]+/.exec(FilteredCommit.refs)[0]}`])
+		// eslint-disable-next-line no-await-in-loop
+		await GitInstance.tag(['--delete', `${/(?!tag: )[0-9]+.[0-9]+.[0-9]+/.exec(FilteredCommit.refs)[0]}`])
 	}
 }
