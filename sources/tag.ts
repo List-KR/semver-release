@@ -52,7 +52,7 @@ export async function CreateLatestTag(ProgramOptions: Types.ProgramOptionsType) 
 
 export async function Apply(ProgramOptions: Types.ProgramOptionsType) {
 	const GitInstance = CreateGitInstance(ProgramOptions)
-	await GitInstance.pushTags()
+	await GitInstance.push('--all')
 }
 
 async function ListCommits(ProgramOptions: Types.ProgramOptionsType) {
@@ -103,7 +103,6 @@ export async function DeleteTagsWithCommits(ProgramOptions: Types.ProgramOptions
 	const FilteredCommits = await FilterCommitsWithTagsExceptRecentTwo(CommitsResults as unknown as ReturnType<typeof ListCommitsContainingTag>)
 	const GitInstance = CreateGitInstance(ProgramOptions)
 	for (const FilteredCommit of FilteredCommits) {
-		// eslint-disable-next-line no-await-in-loop
-		await GitInstance.tag(['--delete', `${/(?!tag: )[0-9]+.[0-9]+.[0-9]+/.exec(FilteredCommit.refs)[0]}`])
+		void GitInstance.tag(['--delete', `${/(?!tag: )[0-9]+.[0-9]+.[0-9]+/.exec(FilteredCommit.refs)[0]}`])
 	}
 }
