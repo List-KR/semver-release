@@ -1,5 +1,7 @@
 import * as Commander from 'commander'
-import {CreateLatestTag, Apply, ListCommitsContainingTag, DeleteTagsWithCommits} from './sources/tag.js'
+import {
+	CreateLatestTag, Apply, ListCommitsContainingTag, DeleteTagsWithCommits,
+} from './sources/tag.js'
 import {CreateReleaseWithLatest, ListRelease, DeleteReleaseExceptRecentTwo} from './sources/release.js'
 import type * as Types from './sources/types.js'
 
