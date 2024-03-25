@@ -15,7 +15,7 @@ export async function CreateReleaseWithLatest(ProgramOptions: Types.ProgramOptio
 		tag_name: Tag,
 		draft: false,
 		prerelease: false,
-		name: Tag,
+		name: Tag
 	})
 }
 
@@ -23,7 +23,7 @@ export async function ListRelease(ProgramOptions: Types.ProgramOptionsType) {
 	const GitHubInstance = CreateGitHubInstance(ProgramOptions)
 	const Releases = await GitHubInstance.repos.listReleases({
 		owner: ProgramOptions.repo.split('/')[0],
-		repo: ProgramOptions.repo.split('/')[1],
+		repo: ProgramOptions.repo.split('/')[1]
 	}).then(Release => Release.data)
 	return Releases
 }
@@ -52,7 +52,7 @@ async function DeleteRelease(ProgramOptions: Types.ProgramOptionsType, Releases:
 		void GitHubInstance.repos.deleteRelease({
 			owner: ProgramOptions.repo.split('/')[0],
 			repo: ProgramOptions.repo.split('/')[1],
-			release_id: ReleasesResult.id,
+			release_id: ReleasesResult.id
 		})
 	}
 }

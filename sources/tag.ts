@@ -10,7 +10,7 @@ import {IsDebug} from './debug.js'
 function CreateGitInstance(ProgramOptions: Types.ProgramOptionsType): Git.SimpleGit {
 	const GitInstance = Git.simpleGit({
 		baseDir: ProgramOptions.ciWorkspacePath,
-		maxConcurrentProcesses: Os.cpus().length,
+		maxConcurrentProcesses: Os.cpus().length
 	})
 
 	return GitInstance
