@@ -15,7 +15,7 @@ export function UpdateDateVersion(Version: string) {
 
 	// Check if the date is updated and change.
 	if ((CurrentVersion.major !== Now.year) || (CurrentVersion.minor.toString() !== GetDaysAfterNewYear(Now).toString())) {
-		NewVersion += `${Now.year}.`
+		NewVersion += `1${Now.year}.`
 		NewVersion += `${GetDaysAfterNewYear(Now)}.`
 		NewVersion += '0'
 	} else {
