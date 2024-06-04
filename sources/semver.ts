@@ -14,8 +14,8 @@ export function UpdateDateVersion(Version: string) {
 	var Now = Luxon.DateTime.utc()
 
 	// Check if the date is updated and change.
-	if ((CurrentVersion.major !== Number(`1${Now.year}`)) || (CurrentVersion.minor.toString() !== GetDaysAfterNewYear(Now).toString())) {
-		NewVersion += `1${Now.year}.`
+	if ((CurrentVersion.major !== (10000 + Now.year)) || (CurrentVersion.minor.toString() !== GetDaysAfterNewYear(Now).toString())) {
+		NewVersion += `${10000 + Now.year}.`
 		NewVersion += `${GetDaysAfterNewYear(Now)}.`
 		NewVersion += '0'
 	} else {
